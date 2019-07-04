@@ -1,17 +1,20 @@
 package org.loanmeterserver.domain.loan;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import com.google.common.base.Preconditions;
 import org.loanmeterserver.domain.base.BaseAggregateRoot;
 import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.shared.vo.Money;
 
-@Getter
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class LoanRequest extends BaseAggregateRoot {
 
     private final Client client;
 
     private final Money amount;
+
+    public LoanRequest(Client client, Money amount) {
+        Preconditions.checkArgument(client != null, "Client cannot be null");
+        Preconditions.checkArgument(amount != null, "Amount cannot be null");
+        this.client = client;
+        this.amount = amount;
+    }
 }

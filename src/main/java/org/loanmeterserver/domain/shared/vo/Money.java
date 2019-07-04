@@ -16,7 +16,7 @@ public class Money {
     public Money(BigDecimal value, Currency currency) {
         Preconditions.checkArgument(value.compareTo(BigDecimal.ZERO) >= 0,
                 "Value cannot be less than zero");
-        Preconditions.checkNotNull(currency, "Currency cannot be null");
+        Preconditions.checkArgument(currency != null, "Currency cannot be null");
         this.value = value;
         this.currency = currency;
     }
