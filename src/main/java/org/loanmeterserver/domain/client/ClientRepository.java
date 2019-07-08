@@ -1,6 +1,6 @@
 package org.loanmeterserver.domain.client;
 
-import org.loanmeterserver.domain.base.AggregateId;
+import org.loanmeterserver.domain.shared.vo.AggregateId;
 import reactor.core.publisher.Mono;
 
 public interface ClientRepository {

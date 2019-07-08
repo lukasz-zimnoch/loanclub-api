@@ -1,6 +1,6 @@
 package org.loanmeterserver.infrastructure.mongo.client;
 
-import org.loanmeterserver.domain.base.AggregateId;
+import org.loanmeterserver.domain.shared.vo.AggregateId;
 import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.client.ClientRepository;
 import org.springframework.stereotype.Repository;

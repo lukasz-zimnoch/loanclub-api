@@ -1,4 +1,4 @@
-package org.loanmeterserver.domain.base;
+package org.loanmeterserver.domain.shared.vo;
 
 import lombok.Value;
 
@@ -16,7 +16,7 @@ public class AggregateId implements Serializable {
         this.value = value;
     }
 
-    static AggregateId generate() {
+    public static AggregateId generate() {
         return new AggregateId(UUID.randomUUID().toString());
     }
 

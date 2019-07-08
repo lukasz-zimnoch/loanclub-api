@@ -1,7 +1,7 @@
 package org.loanmeterserver.domain.loan;
 
 import com.google.common.base.Preconditions;
-import org.loanmeterserver.domain.base.BaseAggregateRoot;
+import org.loanmeterserver.domain.shared.base.BaseAggregateRoot;
 import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.shared.vo.Money;
 

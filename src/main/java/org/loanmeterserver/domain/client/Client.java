@@ -3,7 +3,7 @@ package org.loanmeterserver.domain.client;
 import com.google.common.base.Preconditions;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
-import org.loanmeterserver.domain.base.BaseAggregateRoot;
+import org.loanmeterserver.domain.shared.base.BaseAggregateRoot;
 
 @Getter
 public class Client extends BaseAggregateRoot {
@@ -13,10 +13,8 @@ public class Client extends BaseAggregateRoot {
 	private final String secondName;
 
 	public Client(String firstName, String secondName) {
-		Preconditions.checkArgument(StringUtils.isNotBlank(firstName) && firstName.length() <= 20,
-				"Invalid first name");
-		Preconditions.checkArgument(StringUtils.isNotBlank(secondName) && secondName.length() <= 20,
-				"Invalid second name");
+		Preconditions.checkArgument(StringUtils.isNotBlank(firstName), "First name cannot be null");
+		Preconditions.checkArgument(StringUtils.isNotBlank(secondName),"Second name cannot be null");
 		this.firstName = firstName;
 		this.secondName = secondName;
 	}
