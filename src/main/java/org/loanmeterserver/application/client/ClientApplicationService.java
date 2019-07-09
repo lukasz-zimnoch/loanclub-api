@@ -3,7 +3,6 @@ package org.loanmeterserver.application.client;
 import org.loanmeterserver.application.shared.validator.GenericValidator;
 import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.client.ClientRepository;
-import org.loanmeterserver.domain.shared.vo.AggregateId;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -26,7 +25,7 @@ public class ClientApplicationService {
     }
 
     public Mono<ClientProjection> findClient(String clientId) {
-        return clientRepository.findClientById(new AggregateId(clientId))
+        return clientRepository.findClientById(clientId)
                 .map(client -> mapper.map(client, ClientProjection.class));
     }
 

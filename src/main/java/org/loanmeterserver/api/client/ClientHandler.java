@@ -13,7 +13,7 @@ public class ClientHandler {
 
     private final ClientApplicationService clientApplicationService;
 
-    public ClientHandler(ClientApplicationService clientApplicationService) {
+    ClientHandler(ClientApplicationService clientApplicationService) {
         this.clientApplicationService = clientApplicationService;
     }
 

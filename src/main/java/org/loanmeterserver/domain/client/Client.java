@@ -13,8 +13,8 @@ public class Client extends BaseAggregateRoot {
 	private final String secondName;
 
 	public Client(String firstName, String secondName) {
-		Preconditions.checkArgument(StringUtils.isNotBlank(firstName), "First name cannot be null");
-		Preconditions.checkArgument(StringUtils.isNotBlank(secondName),"Second name cannot be null");
+		Preconditions.checkArgument(StringUtils.isNotBlank(firstName), "First name cannot be blank");
+		Preconditions.checkArgument(StringUtils.isNotBlank(secondName),"Second name cannot be blank");
 		this.firstName = firstName;
 		this.secondName = secondName;
 	}

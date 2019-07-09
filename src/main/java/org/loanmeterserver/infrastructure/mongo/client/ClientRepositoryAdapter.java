@@ -16,8 +16,8 @@ public class ClientRepositoryAdapter implements ClientRepository {
     }
 
     @Override
-    public Mono<Client> findClientById(AggregateId clientId) {
-        return mongoClientRepository.findById(clientId);
+    public Mono<Client> findClientById(String clientId) {
+        return mongoClientRepository.findById(new AggregateId(clientId));
     }
 
     @Override
