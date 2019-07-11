@@ -16,4 +16,8 @@ public abstract class BaseAggregateRoot {
         this.id = AggregateId.generate();
         this.version = 1L;
     }
+
+    public String getIdValue() {
+        return getId().getValue();
+    }
 }

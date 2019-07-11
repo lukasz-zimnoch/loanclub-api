@@ -29,9 +29,10 @@ public class ClientApplicationService {
                 .map(client -> mapper.map(client, ClientProjection.class));
     }
 
-    public Mono<Void> createClient(ClientCreateData clientData) {
+    public Mono<ClientProjection> createClient(ClientCreateData clientData) {
         validator.validate(clientData);
         Client client = new Client(clientData.getFirstName(), clientData.getSecondName());
-        return clientRepository.saveClient(client).then();
+        return clientRepository.saveClient(client)
+                .map(savedClient -> mapper.map(savedClient, ClientProjection.class));
     }
 }

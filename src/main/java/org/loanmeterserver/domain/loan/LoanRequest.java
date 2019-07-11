@@ -1,10 +1,12 @@
 package org.loanmeterserver.domain.loan;
 
 import com.google.common.base.Preconditions;
+import lombok.Getter;
 import org.loanmeterserver.domain.shared.base.BaseAggregateRoot;
 import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.shared.vo.Money;
 
+@Getter
 public class LoanRequest extends BaseAggregateRoot {
 
     private final Client client;

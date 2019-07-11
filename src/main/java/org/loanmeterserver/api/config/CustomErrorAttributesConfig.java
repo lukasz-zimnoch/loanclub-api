@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 @Component
-class CustomErrorAttributesConfig extends DefaultErrorAttributes {
+public class CustomErrorAttributesConfig extends DefaultErrorAttributes {
 
     private final Map<Class, BiConsumer<Throwable, Map<String, Object>>> ATTRIBUTE_PROCESSORS =
             ImmutableMap.<Class, BiConsumer<Throwable, Map<String, Object>>>builder()
