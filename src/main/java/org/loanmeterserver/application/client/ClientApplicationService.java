@@ -1,5 +1,6 @@
 package org.loanmeterserver.application.client;
 
+import org.loanmeterserver.application.shared.base.BaseApplicationService;
 import org.loanmeterserver.application.shared.validator.GenericValidator;
 import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.client.ClientRepository;
@@ -8,20 +9,15 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class ClientApplicationService {
+public class ClientApplicationService extends BaseApplicationService {
 
     private final ClientRepository clientRepository;
 
-    private final ModelMapper mapper;
-
-    private final GenericValidator validator;
-
-    public ClientApplicationService(ClientRepository clientRepository,
-                                    ModelMapper mapper,
-                                    GenericValidator validator) {
+    public ClientApplicationService(ModelMapper mapper,
+                                    GenericValidator validator,
+                                    ClientRepository clientRepository) {
+        super(mapper, validator);
         this.clientRepository = clientRepository;
-        this.mapper = mapper;
-        this.validator = validator;
     }
 
     public Mono<ClientProjection> findClient(String clientId) {

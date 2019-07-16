@@ -4,13 +4,15 @@ import org.loanmeterserver.domain.client.Client
 import org.loanmeterserver.domain.shared.vo.Money
 import spock.lang.Specification
 
-class LoanRequestTest extends Specification {
+import javax.money.Monetary
 
-    public final Money amount = new Money(BigDecimal.TEN, Currency.getInstance("USD"))
+class LoanTest extends Specification {
+
+    private final Money amount = new Money(BigDecimal.TEN, Monetary.getCurrency("USD"))
 
     def "should throw exception on null client"() {
         when:
-        new LoanRequest(null, amount)
+        new Loan(null, amount)
 
         then:
         thrown(IllegalArgumentException)
@@ -19,7 +21,7 @@ class LoanRequestTest extends Specification {
     def "should throw exception on null amount"() {
         when:
         Client client = Stub()
-        new LoanRequest(client, null)
+        new Loan(client, null)
 
         then:
         thrown(IllegalArgumentException)

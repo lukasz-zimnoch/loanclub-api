@@ -2,9 +2,13 @@ package org.loanmeterserver.domain.shared.vo
 
 import spock.lang.Specification
 
+import javax.money.CurrencyUnit
+import javax.money.Monetary
+import javax.money.UnknownCurrencyException
+
 class MoneyTest extends Specification {
 
-    private Currency currency = Currency.getInstance("USD")
+    private final CurrencyUnit currency = Monetary.getCurrency("USD")
 
     def "should accept zero as amount"() {
         when:
@@ -28,5 +32,21 @@ class MoneyTest extends Specification {
 
         then:
         thrown(IllegalArgumentException)
+    }
+
+    def "should throw exception on unknown currency code"() {
+        when:
+        new Money(BigDecimal.ZERO, "FAKE")
+
+        then:
+        thrown(UnknownCurrencyException)
+    }
+
+    def "should accept proper currency code"() {
+        when:
+        Money money = new Money(BigDecimal.ONE, "USD")
+
+        then:
+        money != null
     }
 }

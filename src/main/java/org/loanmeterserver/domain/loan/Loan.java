@@ -7,13 +7,13 @@ import org.loanmeterserver.domain.client.Client;
 import org.loanmeterserver.domain.shared.vo.Money;
 
 @Getter
-public class LoanRequest extends BaseAggregateRoot {
+public class Loan extends BaseAggregateRoot {
 
     private final Client client;
 
     private final Money amount;
 
-    public LoanRequest(Client client, Money amount) {
+    Loan(Client client, Money amount) {
         Preconditions.checkArgument(client != null, "Client cannot be null");
         Preconditions.checkArgument(amount != null, "Amount cannot be null");
         this.client = client;
