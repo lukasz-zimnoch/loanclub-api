@@ -4,3 +4,8 @@ spring:
       database: loanmeter
       host: localhost
       port: 27017
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_aLlPKgdS4/.well-known/jwks.json
