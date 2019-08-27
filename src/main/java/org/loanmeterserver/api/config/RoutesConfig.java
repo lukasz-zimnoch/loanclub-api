@@ -22,7 +22,6 @@ public class RoutesConfig {
     public RouterFunction<ServerResponse> routes() {
         return route()
                 .path("/api", builder -> builder
-                        .path("/clients", () -> routes.get("clientRoutes"))
                         .path("/loans", () -> routes.get("loanRoutes")))
                 .build();
     }

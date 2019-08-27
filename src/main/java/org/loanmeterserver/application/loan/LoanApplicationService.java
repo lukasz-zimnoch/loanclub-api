@@ -27,8 +27,7 @@ public class LoanApplicationService extends BaseApplicationService {
 
     public Mono<LoanProjection> createLoan(LoanCreateData loanCreateData) {
         validator.validate(loanCreateData);
-        return loanFactory.createLoan(loanCreateData.getClientId(), loanCreateData.getAmountValue(),
-                loanCreateData.getCurrencyCode())
+        return loanFactory.createLoan(loanCreateData.getAmountValue(), loanCreateData.getCurrencyCode())
                 .onErrorMap(throwable -> new ApplicationException(throwable.getMessage()))
                 .flatMap(loanRepository::saveLoan)
                 .map(savedLoan -> mapper.map(savedLoan, LoanProjection.class));

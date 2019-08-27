@@ -10,9 +10,6 @@ import java.math.BigDecimal;
 @Data
 public class LoanCreateData {
 
-    @NotBlank
-    private String clientId;
-
     @NotNull
     @DecimalMin("0.00")
     private BigDecimal amountValue;
