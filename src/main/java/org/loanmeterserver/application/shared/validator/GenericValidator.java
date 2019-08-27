@@ -19,7 +19,7 @@ public class GenericValidator {
         this.validator = validator;
     }
 
-    public <T> void validate(T input) {
+    public <T> T validate(T input) {
         Set<ConstraintViolation<T>> violations = validator.validate(input);
         if(!violations.isEmpty()) {
             List<ValidationErrorDescriptor> errors = violations.stream()
@@ -27,6 +27,7 @@ public class GenericValidator {
                     .collect(Collectors.toList());
             throw new ValidationException("Validation failed for input: " + input, errors);
         }
+        return input;
     }
 }
 

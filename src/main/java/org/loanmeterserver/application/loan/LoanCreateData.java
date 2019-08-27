@@ -12,8 +12,8 @@ public class LoanCreateData {
 
     @NotNull
     @DecimalMin("0.00")
-    private BigDecimal amountValue;
+    private final BigDecimal amountValue;
 
     @NotBlank
-    private String currencyCode;
+    private final String currencyCode;
 }
