@@ -6,7 +6,7 @@ import javax.money.UnknownCurrencyException
 
 class MoneyTest extends Specification {
 
-    def "should accept zero as amount"() {
+    def "should accept zero as value"() {
         when:
         Money money = new Money(BigDecimal.ZERO, "USD")
 
@@ -14,7 +14,7 @@ class MoneyTest extends Specification {
         money != null
     }
 
-    def "should throw exception on amount less than zero"() {
+    def "should throw exception on negative value"() {
         when:
         new Money(BigDecimal.valueOf(-1), "USD")
 
@@ -22,7 +22,7 @@ class MoneyTest extends Specification {
         thrown(IllegalArgumentException)
     }
 
-    def "should throw exception on null currency code"() {
+    def "should throw exception on null currency"() {
         when:
         new Money(BigDecimal.ZERO, null)
 
@@ -30,7 +30,7 @@ class MoneyTest extends Specification {
         thrown(IllegalArgumentException)
     }
 
-    def "should throw exception on unknown currency code"() {
+    def "should throw exception on unknown currency"() {
         when:
         new Money(BigDecimal.ZERO, "FAKE")
 
@@ -38,7 +38,7 @@ class MoneyTest extends Specification {
         thrown(UnknownCurrencyException)
     }
 
-    def "should accept proper currency code"() {
+    def "should accept proper currency"() {
         when:
         Money money = new Money(BigDecimal.ONE, "USD")
 

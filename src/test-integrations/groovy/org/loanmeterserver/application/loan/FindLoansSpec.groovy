@@ -79,5 +79,7 @@ class FindLoansSpec extends Specification {
                 .blockFirst()
 
         responseBody.getId() == loan.getIdValue()
+        responseBody.getAmountValue() == BigDecimal.TEN
+        responseBody.getAmountCurrency() == "USD"
     }
 }

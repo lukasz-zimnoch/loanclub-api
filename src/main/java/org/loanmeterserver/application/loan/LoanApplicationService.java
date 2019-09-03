@@ -34,7 +34,7 @@ public class LoanApplicationService extends BaseApplicationService {
     public Mono<LoanProjection> createLoan(LoanCreateData loanCreateData) {
         return Mono.just(validator.validate(loanCreateData))
                 .zipWith(securityService.getAuthenticatedAccount())
-                .flatMap(t -> loanFactory.createLoan(t.getT2(), t.getT1().getAmountValue(), t.getT1().getCurrencyCode()))
+                .flatMap(t -> loanFactory.createLoan(t.getT2(), t.getT1().getAmountValue(), t.getT1().getAmountCurrency()))
                 .onErrorMap(throwable -> new ApplicationException(throwable.getMessage()))
                 .flatMap(loanRepository::saveLoan)
                 .map(savedLoan -> mapper.map(savedLoan, LoanProjection.class));

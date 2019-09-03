@@ -15,5 +15,5 @@ public class LoanCreateData {
     private final BigDecimal amountValue;
 
     @NotBlank
-    private final String currencyCode;
+    private final String amountCurrency;
 }

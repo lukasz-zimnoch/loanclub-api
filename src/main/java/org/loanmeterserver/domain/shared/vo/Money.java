@@ -12,16 +12,13 @@ public class Money {
 
     private final BigDecimal value;
 
-    private final String currencyCode;
+    private final String currency;
 
-    public Money(BigDecimal value, String currencyCode) {
-        Preconditions.checkArgument(value.compareTo(BigDecimal.ZERO) >= 0,
-                "Value cannot be less than zero");
-        Preconditions.checkArgument(StringUtils.isNotBlank(currencyCode),
-                "Currency code cannot be blank");
-        Preconditions.checkNotNull(Monetary.getCurrency(currencyCode),
-                "Invalid currency code");
+    public Money(BigDecimal value, String currency) {
+        Preconditions.checkArgument(value.compareTo(BigDecimal.ZERO) >= 0, "Value cannot be negative");
+        Preconditions.checkArgument(StringUtils.isNotBlank(currency), "Currency cannot be blank");
+        Preconditions.checkNotNull(Monetary.getCurrency(currency), "Unknown currency");
         this.value = value;
-        this.currencyCode = currencyCode;
+        this.currency = currency;
     }
 }
