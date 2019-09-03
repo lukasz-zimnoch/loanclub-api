@@ -1,6 +1,7 @@
 package org.loanmeterserver.application.shared.security;
 
 import org.loanmeterserver.domain.shared.vo.Account;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
@@ -25,5 +26,13 @@ public class SecurityService {
     private Account toAccount(Authentication authentication) {
         JwtAuthenticationToken jwt = (JwtAuthenticationToken) authentication;
         return new Account(jwt.getName());
+    }
+
+    public Mono<Account> checkAccountAuthentication(Account account) {
+        Mono<Account> success = Mono.just(account);
+        Mono<Account> error = Mono.error(new AccessDeniedException("Forbidden"));
+
+        return getAuthenticatedAccount()
+                .flatMap(authenticatedAccount -> authenticatedAccount.equals(account) ? success : error);
     }
 }

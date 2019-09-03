@@ -21,7 +21,8 @@ public class LoanRoutesConfig {
     public RouterFunction<ServerResponse> loanRoutes() {
         return route()
                 .nest(RequestPredicates.all(), builder -> builder
-                        .POST("", loanHandler::createLoan))
+                        .POST("", loanHandler::createLoan)
+                        .GET("", loanHandler::findLoans))
                 .build();
     }
 }
