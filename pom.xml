@@ -12,10 +12,10 @@
 	</parent>
 
 	<groupId>org</groupId>
-	<artifactId>loanmeter-server</artifactId>
+	<artifactId>loanclub-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>loanmeter-server</name>
-	<description>Playground project - Loanmeter server</description>
+	<name>loanclub-api</name>
+	<description>Playground project - Loanclub API</description>
 
 	<properties>
 		<java.version>1.8</java.version>
