@@ -1,5 +1,7 @@
 package org.loanclub.api.loan;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 import org.springframework.context.annotation.Bean;
@@ -21,7 +23,7 @@ public class LoanRoutesConfig {
     public RouterFunction<ServerResponse> loanRoutes() {
         return route()
                 .nest(RequestPredicates.all(), builder -> builder
-                        .POST("", loanHandler::createLoan)
+                        .POST("", contentType(APPLICATION_JSON), loanHandler::createLoan)
                         .GET("", loanHandler::findLoans))
                 .build();
     }
