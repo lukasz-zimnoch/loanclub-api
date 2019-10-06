@@ -8,4 +8,4 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_aLlPKgdS4/.well-known/jwks.json
+          jwk-set-uri: https://cognito-idp.%AWS_REGION%.amazonaws.com/%AWS_POOL_ID%/.well-known/jwks.json
