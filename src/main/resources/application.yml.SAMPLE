@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       database: loanclub
-      host: localhost
+      host: loanclub_db
       port: 27017
   security:
     oauth2:

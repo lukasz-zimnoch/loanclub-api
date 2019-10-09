@@ -1,0 +1,16 @@
+version: '2.3'
+
+services:
+
+  loanclub:
+    image: loanclub/loanclub-api
+    container_name: loanclub
+    mem_limit: 1g
+    ports:
+      - "8080:8080"
+    depends_on:
+      - loanclub_db
+
+  loanclub_db:
+    image: mongo:3.7.2-jessie
+    container_name: loanclub_db
